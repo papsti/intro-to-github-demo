@@ -17,15 +17,22 @@ library(ggplot2)
 ## Analysis code
 
 ```{r}
-#| label: analysis
-data = (penguins 
-  |> dplyr::filter(species == "Adelie")
-)
-
-model_coef = (
-  lm(body_mass_g ~ flipper_length_mm, data = data)
-  |> coefficients()
-)
+#| label: fun_get_model_coef
+get_model_coef = function(species_name){
+  obs = (penguins 
+    |> dplyr::filter(species == species_name)
+  )
+    
+  model_coef = (
+    lm(body_mass_g ~ flipper_length_mm, data = obs)
+    |> coefficients()
+  )
+  
+  return(list(
+    obs = obs, 
+    model_coef = model_coef
+  ))
+}
 ```
 
 ---
