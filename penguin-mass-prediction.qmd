@@ -38,29 +38,35 @@ get_model_coef = function(species_name){
 ---
 
 ```{r}
-#| label: plot
+#| label: fun_make_model_plot
 #| echo: false
-#| fig-width: 9.5
-#| fig-height: 7
-#| fig-align: center
-(ggplot(data)
-  + geom_point(
-    aes(x = flipper_length_mm,
-        y = body_mass_g),
-    shape = 1, size = 4, stroke = 1.5, alpha = 0.5
+make_model_plot = function(species_name){
+  plot_data = get_model_coef(species_name)
+  
+  pp = (ggplot(plot_data$obs)
+    + geom_point(
+      aes(x = flipper_length_mm,
+          y = body_mass_g),
+      shape = 1, size = 4, stroke = 1.5, alpha = 0.5
+      )
+    + geom_abline(intercept = plot_data$model_coef[1], 
+                  slope = plot_data$model_coef[2],
+                  linewidth = 2, colour = "dodgerblue", alpha = 0.7)
+    + labs(
+      x = "Flipper length (mm)",
+      y = "Body mass (g)",
+      title = paste("Relationship between flipper length and body mass for",
+                    species_name,
+                    "penguins"),
+      subtitle = "Observations (points) vs linear model fit (line)"
     )
-  + geom_abline(intercept = model_coef[1], slope = model_coef[2],
-                linewidth = 2, colour = "dodgerblue", alpha = 0.7)
-  + labs(
-    x = "Flipper length (mm)",
-    y = "Body mass (g)",
-    title = "Relationship between flipper length and body mass for Adelie penguins",
-    subtitle = "Observations (points) vs linear model fit (line)"
+    + theme_bw(
+      base_size = 16
+    )
   )
-  + theme_bw(
-    base_size = 16
-  )
-)
+  
+  return(pp)
+}
 ```
 
 
