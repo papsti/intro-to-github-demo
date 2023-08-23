@@ -69,4 +69,22 @@ make_model_plot = function(species_name){
 }
 ```
 
+```{r}
+#| label: plot_adelie
+#| echo: false
+#| fig-width: 10
+#| fig-height: 7
+#| fig-align: center
+make_model_plot("Adelie")
+```
 
+---
+
+```{r}
+#| label: plot_chinstrap
+#| echo: false
+#| fig-width: 10
+#| fig-height: 7
+#| fig-align: center
+make_model_plot("Chinstrap")
+```
