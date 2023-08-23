@@ -1,2 +1,4 @@
 # intro-to-github-demo
-An example of creating a repository on Github.com
+An example of creating a repository on Github.com.
+
+Includes an example analysis of Palmer penguin body weight vs flipper length.
