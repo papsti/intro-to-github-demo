@@ -1,5 +1,5 @@
 ---
-title: "Does flipper length predict body mass in Adelie penguins?"
+title: "Does flipper length predict body mass in Palmer penguins?"
 author: "Irena Papst"
 format: revealjs
 editor: visual
